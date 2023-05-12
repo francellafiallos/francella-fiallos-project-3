@@ -162,107 +162,126 @@ const Form = () => {
         <section>
             <form onSubmit={handleSubmit}>
 
-                <legend>How old are you?</legend>
+                <div className="form-questions">
 
-                <input 
-                    type="radio" 
-                    value="18-35" 
-                    id="age-one" 
-                    name="age" 
-                    checked={questionOne === "18-35"}
-                    onChange={handleRadioOneChange}
-                    required/>
-                <label htmlFor="age-one">18-35</label>
-                <input 
-                    type="radio" 
-                    value="36-49" 
-                    id="age-two" 
-                    name="age"
-                    checked={questionOne === "36-49"}
-                    onChange={handleRadioOneChange}/>
-                <label htmlFor="age-two">36-49</label>
+                    <legend>1. How old are you?</legend>
 
-                <legend>Which streaming platform do you use?</legend>
+                    <div>
 
-                <input 
-                    type="radio" 
-                    value="spotify" 
-                    id="streaming-one" 
-                    name="streaming" 
-                    checked={questionTwo === "spotify"}
-                    onChange={handleRadioTwoChange}
-                    required/>
-                <label htmlFor="streaming-one">Spotify</label>
-                <input 
-                    type="radio" 
-                    value="apple-music" 
-                    id="streaming-two" 
-                    name="streaming"
-                    checked={questionTwo === "apple-music"}
-                    onChange={handleRadioTwoChange}/>
-                <label htmlFor="streaming-two">Apple Music</label>
+                        <input 
+                            type="radio" 
+                            value="18-35" 
+                            id="age-one" 
+                            className="form-question"
+                            name="age" 
+                            checked={questionOne === "18-35"}
+                            onChange={handleRadioOneChange}
+                            required/>
+                        <label htmlFor="age-one">18-35</label>
+                        <input 
+                            type="radio" 
+                            value="36-49" 
+                            id="age-two" 
+                            className="form-question"
+                            name="age"
+                            checked={questionOne === "36-49"}
+                            onChange={handleRadioOneChange}/>
+                        <label htmlFor="age-two">36-49</label>
 
-                <legend>Do you read the liner notes of an album?</legend>
+                    </div>
 
-                <input 
-                    type="radio" 
-                    value="yes" 
-                    id="liner-notes-one" 
-                    name="liner-notes" 
-                    checked={questionThree === "yes"}
-                    onChange={handleRadioThreeChange}
-                    required/>
-                <label htmlFor="liner-notes-one">Yes</label>
-                <input 
-                    type="radio" 
-                    value="no" 
-                    id="liner-notes-two" 
-                    name="liner-notes"
-                    checked={questionThree === "no"}
-                    onChange={handleRadioThreeChange}/>
-                <label htmlFor="liner-notes-two">No</label>
 
-                <legend>How do you discover new music?</legend>
+                    <legend>2. Which streaming platform do you use?</legend>
 
-                <input 
-                    type="radio" 
-                    value="word-of-mouth" 
-                    id="new-music-one" 
-                    name="new-music" 
-                    checked={questionFour === "word-of-mouth"}
-                    onChange={handleRadioFourChange}
-                    required/>
-                <label htmlFor="new-music-one">Word of Mouth</label>
-                <input 
-                    type="radio" 
-                    value="Bandcamp-and-online-research" 
-                    id="new-music-two" 
-                    name="new-music"
-                    checked={questionFour === "Bandcamp-and-online-research"}
-                    onChange={handleRadioFourChange}/>
-                <label htmlFor="new-music-two">Bandcamp and online research</label>
+                    <input 
+                        type="radio" 
+                        value="spotify" 
+                        id="streaming-one" 
+                        className="form-question"
+                        name="streaming" 
+                        checked={questionTwo === "spotify"}
+                        onChange={handleRadioTwoChange}
+                        required/>
+                    <label htmlFor="streaming-one">Spotify</label>
+                    <input 
+                        type="radio" 
+                        value="apple-music" 
+                        id="streaming-two" 
+                        className="form-question"
+                        name="streaming"
+                        checked={questionTwo === "apple-music"}
+                        onChange={handleRadioTwoChange}/>
+                    <label htmlFor="streaming-two">Apple Music</label>
 
-                <legend>Which instrument do you prefer?</legend>
+                    <legend>3. Do you read the liner notes of an album?</legend>
 
-                <input 
-                    type="radio" 
-                    value="guitar" 
-                    id="instrument-one" 
-                    name="instrument" 
-                    checked={questionFive === "guitar"}
-                    onChange={handleRadioFiveChange}
-                    required/>
-                <label htmlFor="instrument-one">Guitar</label>
-                <input 
-                    type="radio" 
-                    value="keyboard" 
-                    id="instrument-two" 
-                    name="instrument"
-                    checked={questionFive === "keyboard"}
-                    onChange={handleRadioFiveChange}/>
-                <label htmlFor="instrument-two">Keyboard</label>
-                
-                <button>Submit</button>
+                    <input 
+                        type="radio" 
+                        value="yes" 
+                        id="liner-notes-one" 
+                        className="form-question"
+                        name="liner-notes" 
+                        checked={questionThree === "yes"}
+                        onChange={handleRadioThreeChange}
+                        required/>
+                    <label htmlFor="liner-notes-one">Yes</label>
+                    <input 
+                        type="radio" 
+                        value="no" 
+                        id="liner-notes-two" 
+                        className="form-question"
+                        name="liner-notes"
+                        checked={questionThree === "no"}
+                        onChange={handleRadioThreeChange}/>
+                    <label htmlFor="liner-notes-two">No</label>
+
+                    <legend>4. How do you discover new music?</legend>
+
+                    <input 
+                        type="radio" 
+                        value="word-of-mouth" 
+                        id="new-music-one" 
+                        className="form-question"
+                        name="new-music" 
+                        checked={questionFour === "word-of-mouth"}
+                        onChange={handleRadioFourChange}
+                        required/>
+                    <label htmlFor="new-music-one">Word of Mouth</label>
+                    <input 
+                        type="radio" 
+                        value="Bandcamp-and-online-research" 
+                        id="new-music-two" 
+                        className="form-question"
+                        name="new-music"
+                        checked={questionFour === "Bandcamp-and-online-research"}
+                        onChange={handleRadioFourChange}/>
+                    <label htmlFor="new-music-two">Bandcamp and online research</label>
+
+                    <legend>5. Which instrument do you prefer?</legend>
+
+                    <input 
+                        type="radio" 
+                        value="guitar" 
+                        id="instrument-one" 
+                        className="form-question"
+                        name="instrument" 
+                        checked={questionFive === "guitar"}
+                        onChange={handleRadioFiveChange}
+                        required/>
+                    <label htmlFor="instrument-one">Guitar</label>
+                    <input 
+                        type="radio" 
+                        value="keyboard" 
+                        id="instrument-two" 
+                        className="form-question"
+                        name="instrument"
+                        checked={questionFive === "keyboard"}
+                        onChange={handleRadioFiveChange}/>
+                    <label htmlFor="instrument-two">Keyboard</label>
+                    
+                    <button>Submit</button>
+
+                </div>
             </form>
             <h2>If you were a genre, you would be...</h2>
             {genre && <p>{genre}</p>} 

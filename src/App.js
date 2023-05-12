@@ -2,6 +2,7 @@
 import './App.css';
 import Header from './components/Header.js';
 import Form from './components/Form.js';
+import Footer from './components/Footer.js';
 // import axios from 'axios';
 
 
@@ -15,6 +16,7 @@ function App() {
       < Header />
       <Form />
     </div>
+
   );
 }
 
