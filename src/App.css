@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 html {
   background-image: url('./assets/background.jpg');
+  background-repeat: round;
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-and-header {
   text-align: center;
   border: solid 2px crimson;
   border-radius: 1rem;
@@ -12,6 +19,35 @@ html {
   width: 600px;
   margin: 50px auto;
   background-color: #F8E6E8;
+}
+
+.form-questions {
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+}
+
+.question-one,
+.question-two,
+.question-three,
+.question-four,
+.question-five {
+  padding: 15px;
+}
+
+.question-one-options,
+.question-two-options,
+.question-three-options,
+.question-four-options,
+.question-five-options {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+legend {
+  padding: 10px 0 10px 0;
 }
 
 h1 {
@@ -22,11 +58,52 @@ h1 {
 }
 
 h2 {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: crimson;
+  letter-spacing: 3px;
+}
+
+.grow { 
+  transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+  transform: scale(1.1); 
 }
 
 .take-the-quiz {
   letter-spacing: 5px;
 }
 
-/* credit to kim! for her very nice styling on her portfolio, which i have applied here on my app! */
+button {
+  padding-right: 55px;
+  padding-left: 55px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 30px;
+  background-color: crimson;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 50px 0 50px 0;
+  border: none;
+}
+
+.footer {
+  width: 100%;
+  background-color: #F8E6E8;
+}
+
+h5 {
+  text-align: center;
+  padding: 10px;
+}
+
+/* credit to kim! for her very nice styling on her portfolio, which i have applied here on my app, with her gracious permission! stanning a queen! */
