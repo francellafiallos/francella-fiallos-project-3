@@ -107,3 +107,36 @@ h5 {
 }
 
 /* credit to kim! for her very nice styling on her portfolio, which i have applied here on my app, with her gracious permission! stanning a queen! */
+
+/* media queries */
+
+@media (max-width: 630px) {
+  .form-and-header {
+    max-width: 630px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 540px) {
+  .form-questions {
+    width: 95%;
+  }
+
+  .question-four-options {
+    display: flex; 
+    flex-direction: column;
+  }
+  .option-one-q4 {
+    padding: 0 0 10px 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .question-five-options {
+    display: flex;
+    flex-direction: column;
+  }
+  .option-one-q5 {
+    padding: 0 0 10px 0;
+  }
+}

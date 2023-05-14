@@ -79,12 +79,12 @@ const Form = () => {
             let genre = genres[i];
         
             // If an expression is true, add the genre to newGenres. this is the conditional logic for age
-            if (questionOne == "18-35" && youthwords.some((word) => {
+            if (questionOne === "18-35" && youthwords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
             }
-            else if (questionOne == "36-49" && oldwords.some((word) => {
+            else if (questionOne === "36-49" && oldwords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
@@ -92,12 +92,12 @@ const Form = () => {
 
             // streaming conditional logic
 
-            else if (questionTwo == "spotify" && spotifyWords.some((word) => {
+            else if (questionTwo === "spotify" && spotifyWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
             }
-            else if (questionTwo == "apple-music" && appleWords.some((word) => {
+            else if (questionTwo === "apple-music" && appleWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
@@ -105,12 +105,12 @@ const Form = () => {
 
             // liner notes conditional logic
 
-            else if (questionThree == "yes" && yesLinerNotesWords.some((word) => {
+            else if (questionThree === "yes" && yesLinerNotesWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
             }
-            else if (questionThree == "no" && noLinerNotesWords.some((word) => {
+            else if (questionThree === "no" && noLinerNotesWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
@@ -118,12 +118,12 @@ const Form = () => {
 
             // new music conditional logic
 
-            else if (questionFour == "word-of-mouth" && wordOfMouthWords.some((word) => {
+            else if (questionFour === "word-of-mouth" && wordOfMouthWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
             }
-            else if (questionFour == "Bandcamp-and-online-research" && bandcampWords.some((word) => {
+            else if (questionFour === "Bandcamp-and-online-research" && bandcampWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
@@ -131,12 +131,12 @@ const Form = () => {
 
             // instrument conditional logic
 
-            else if (questionFive == "guitar" && guitarWords.some((word) => {
+            else if (questionFive === "guitar" && guitarWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
             }
-            else if (questionFive == "keyboard" && keyboardWords.some((word) => {
+            else if (questionFive === "keyboard" && keyboardWords.some((word) => {
                 return genre.includes(word);
             })) {
               newGenres.push(genre);
@@ -150,7 +150,7 @@ const Form = () => {
     }
     
     const pickGenre = (genres, backup) => {
-        if ( genres.length == 0 )
+        if ( genres.length === 0 )
         return backup;
         let i = Math.floor(Math.random()*genres.length);
         return genres[i];
