@@ -1,43 +1,23 @@
 import { useState } from 'react';
 import axios from 'axios';
+import formQuestions from '../helpers/questions';
 
 const Form = () => {
     //saving the API data in state
   const [genre, setGenre] = useState("");
-  const [questionOne, setQuestionOne] = useState("");
-  const [questionTwo, setQuestionTwo] = useState("");
-  const [questionThree, setQuestionThree] = useState("");
-  const [questionFour, setQuestionFour] = useState("");
-  const [questionFive, setQuestionFive] = useState("");
+
+
+  const [questions, setQuestions] = useState(formQuestions);
  
 //   const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('you clicked submit!')
     fetchData();
   }
   
-  const handleRadioOneChange = (event) => {
-    setQuestionOne(event.target.value);
-  }
+console.log(questions);
 
-  const handleRadioTwoChange = (event) => {
-    setQuestionTwo(event.target.value);
-  }
-
-  const handleRadioThreeChange = (event) => {
-    setQuestionThree(event.target.value);
-  }
-
-  const handleRadioFourChange = (event) => {
-    setQuestionFour(event.target.value);
-  }
-
-  const handleRadioFiveChange = (event) => {
-    setQuestionFive(event.target.value);
-  }
-  
   //fetching the API data
   const fetchData = () => {
       
@@ -53,95 +33,28 @@ const Form = () => {
         setGenre(pickGenre(genres, res.data[0]));
     })
 
-    //consider each form field and filter results based on their selected value
+    // filtering the original array of 100 based on conditional logic below. conditional logic is refactored and optimized to allow for more questions in the future!
+    
     const filterResult = (genres) => {
-
-        const youthwords = ["pop", "trap", "rap"];
-        const oldwords = ["folk", "jazz", "rock"];
-
-        const spotifyWords = ["tronica", "core"];
-        const appleWords = ["trip", "electro", "future"];
-
-        const yesLinerNotesWords = ["swedish", "tropicali", "post"];
-        const noLinerNotesWords = ["korean", "cowbell", "flow"];
-
-        const wordOfMouthWords = ["banjo", "bluegrass"];
-        const bandcampWords = ["goth", "gaze", "power"];
-
-        const guitarWords = ["guitar"];
-        const keyboardWords = ["keyboard", "synth", "piano"];
-        
-        // const age = document.querySelector('input[name="age"]:checked').value;
-        // const streamingService = document.querySelector('input[name="streaming"]:checked').value;
-
-        let newGenres = [];
+        let newGenres = []
+        // console.log(genres.includes("grave brass")
         for (let i = 0; i < genres.length; i++) {
             let genre = genres[i];
-        
-            // If an expression is true, add the genre to newGenres. this is the conditional logic for age
-            if (questionOne === "18-35" && youthwords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-            else if (questionOne === "36-49" && oldwords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
+            questions.forEach((chunk) => {
+                    if (chunk.response === chunk.values[0] && chunk.first.some((word) => 
+                        genre.includes(word)
+                    )
+                    ) {
+                        newGenres.push(genre);
+                    } else if (
+                        chunk.response === chunk.values[1] && chunk.second.some((word) => 
+                        genre.includes(word) )
+                    ) {
+                        newGenres.push(genre);
+                    }
+                })
+        }
 
-            // streaming conditional logic
-
-            else if (questionTwo === "spotify" && spotifyWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-            else if (questionTwo === "apple-music" && appleWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-
-            // liner notes conditional logic
-
-            else if (questionThree === "yes" && yesLinerNotesWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-            else if (questionThree === "no" && noLinerNotesWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-
-            // new music conditional logic
-
-            else if (questionFour === "word-of-mouth" && wordOfMouthWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-            else if (questionFour === "Bandcamp-and-online-research" && bandcampWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-
-            // instrument conditional logic
-
-            else if (questionFive === "guitar" && guitarWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-            else if (questionFive === "keyboard" && keyboardWords.some((word) => {
-                return genre.includes(word);
-            })) {
-              newGenres.push(genre);
-            }
-          }
         
           // Remove all old genres and replace them with new genres
           genres = newGenres; // This line modifies the genres array
@@ -164,200 +77,65 @@ const Form = () => {
 
                 <div className="form-questions">
 
-                    <div className="question-one">
+                    {
+                        questions?.map((item, index) => {
+                            return (
+                                <div className="questions" key={"key"+index}>
 
-                    <legend>1. How old are you?</legend>
+                                <div className="question-one-options">
 
-                        <div className="question-one-options">
+                                <legend>{item.question}</legend>
 
-                            <div className="option-one-q1">
+                                    <div className="option-one-q1">
 
-                                <input 
-                                    type="radio" 
-                                    value="18-35" 
-                                    id="age-one" 
-                                    className="form-question"
-                                    name="age" 
-                                    checked={questionOne === "18-35"}
-                                    onChange={handleRadioOneChange}
-                                    required/>
-                                <label htmlFor="age-one">18-35</label>
+                                        <input 
+                                            type="radio" 
+                                            value={item.values[0]} 
+                                            id={item.values[0]} 
+                                            className="form-question"
+                                            name={"radio" + index} 
+                                            // checked={questionOne === "18-35"}
+                                            onChange={(event) => setQuestions([
+                                                ...questions.slice(0, index),
+                                                {
+                                                    ...item,
+                                                    response: event.target.value
+                                                },
+                                                ...questions.slice(index + 1)
+                                            ])}
+                                            required/>
+                                        <label htmlFor={item.values[0]}>{item.values[0]}</label>
 
-                            </div>
+                                    </div>
 
-                            <div className="option-two-q1">
+                                    <div className="option-two-q1">
 
-                                <input 
-                                    type="radio" 
-                                    value="36-49" 
-                                    id="age-two" 
-                                    className="form-question"
-                                    name="age"
-                                    checked={questionOne === "36-49"}
-                                    onChange={handleRadioOneChange}/>
-                                <label htmlFor="age-two">36-49</label>
+                                        <input 
+                                            type="radio" 
+                                            value={item.values[1]} 
+                                            id={item.values[1]}
+                                            className="form-question"
+                                            name={"radio" + index}
+                                            // checked={questionOne === "36-49"}
+                                            onChange={(event) => setQuestions([
+                                                ...questions.slice(0, index),
+                                                {
+                                                    ...item,
+                                                    response: event.target.value
+                                                },
+                                                ...questions.slice(index + 1)
+                                            ])}
+                                            />
+                                        <label htmlFor={item.values[1]}>{item.values[1]}</label>
 
-                            </div>
+                                    </div>
 
-                        </div>
-
-                    </div>
-
-                    <div className="question-two">
-
-                        <legend>2. Which streaming platform do you use?</legend>
-
-                        <div className="question-two-options">
-
-                            <div className="option-one-q2">
-
-                                <input 
-                                    type="radio" 
-                                    value="spotify" 
-                                    id="streaming-one" 
-                                    className="form-question"
-                                    name="streaming" 
-                                    checked={questionTwo === "spotify"}
-                                    onChange={handleRadioTwoChange}
-                                    required/>
-                                <label htmlFor="streaming-one">Spotify</label>
+                                </div>
 
                             </div>
-
-                            <div className="option-two-q2">
-
-                                <input 
-                                    type="radio" 
-                                    value="apple-music" 
-                                    id="streaming-two" 
-                                    className="form-question"
-                                    name="streaming"
-                                    checked={questionTwo === "apple-music"}
-                                    onChange={handleRadioTwoChange}/>
-                                <label htmlFor="streaming-two">Apple Music</label>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="question-three">
-
-                        <legend>3. Do you read the liner notes of an album?</legend>
-
-                        <div className="question-three-options">
-
-                            <div className="option-one-q3"> 
-
-                                <input 
-                                    type="radio" 
-                                    value="yes" 
-                                    id="liner-notes-one" 
-                                    className="form-question"
-                                    name="liner-notes" 
-                                    checked={questionThree === "yes"}
-                                    onChange={handleRadioThreeChange}
-                                    required/>
-                                <label htmlFor="liner-notes-one">Yes</label>
-
-                            </div>
-
-                            <div className="option-two-q3">
-
-                                <input 
-                                    type="radio" 
-                                    value="no" 
-                                    id="liner-notes-two" 
-                                    className="form-question"
-                                    name="liner-notes"
-                                    checked={questionThree === "no"}
-                                    onChange={handleRadioThreeChange}/>
-                                <label htmlFor="liner-notes-two">No</label>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="question-four">
-
-                        <legend>4. How do you discover new music?</legend>
-
-                        <div className="question-four-options">
-
-                            <div className="option-one-q4">
-
-                                <input 
-                                    type="radio" 
-                                    value="word-of-mouth" 
-                                    id="new-music-one" 
-                                    className="form-question"
-                                    name="new-music" 
-                                    checked={questionFour === "word-of-mouth"}
-                                    onChange={handleRadioFourChange}
-                                    required/>
-                                <label htmlFor="new-music-one">Word of Mouth</label>
-
-                            </div>
-
-                            <div className="option-two-q4">
-
-                                <input 
-                                    type="radio" 
-                                    value="Bandcamp-and-online-research" 
-                                    id="new-music-two" 
-                                    className="form-question"
-                                    name="new-music"
-                                    checked={questionFour === "Bandcamp-and-online-research"}
-                                    onChange={handleRadioFourChange}/>
-                                <label htmlFor="new-music-two">Bandcamp and online research</label>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="question-five">
-
-                        <legend>5. Which instrument do you prefer?</legend>
-
-                        <div className="question-five-options">
-
-                            <div className="option-one-q5">
-
-                                <input 
-                                    type="radio" 
-                                    value="guitar" 
-                                    id="instrument-one" 
-                                    className="form-question"
-                                    name="instrument" 
-                                    checked={questionFive === "guitar"}
-                                    onChange={handleRadioFiveChange}
-                                    required/>
-                                <label htmlFor="instrument-one">Guitar</label>
-
-                            </div>
-
-                            <div className="option-two-q5">
-
-                                <input 
-                                    type="radio" 
-                                    value="keyboard" 
-                                    id="instrument-two" 
-                                    className="form-question"
-                                    name="instrument"
-                                    checked={questionFive === "keyboard"}
-                                    onChange={handleRadioFiveChange}/>
-                                <label htmlFor="instrument-two">Keyboard</label>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                            )
+                        })
+                    }
 
                     <div className="button-container">
 
