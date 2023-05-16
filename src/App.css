@@ -29,19 +29,16 @@ html {
   letter-spacing: 1.5px;
 }
 
-.question-one,
-.question-two,
-.question-three,
-.question-four,
-.question-five {
+.questions {
+  padding: 0 0 40px 0;
+}
+
+.option-one,
+.option-two {
   padding: 15px;
 }
 
-.question-one-options,
-.question-two-options,
-.question-three-options,
-.question-four-options,
-.question-five-options {
+.question-options {
   display: flex;
   justify-content: space-evenly;
 }
@@ -60,6 +57,7 @@ h1 {
 h2 {
   font-family: 'Quicksand', sans-serif;
   letter-spacing: 1px;
+  padding: 0 0 20px 0; 
 }
 
 h3 {
@@ -120,23 +118,5 @@ h5 {
 @media (max-width: 540px) {
   .form-questions {
     width: 95%;
-  }
-
-  .question-four-options {
-    display: flex; 
-    flex-direction: column;
-  }
-  .option-one-q4 {
-    padding: 0 0 10px 0;
-  }
-}
-
-@media (max-width: 360px) {
-  .question-five-options {
-    display: flex;
-    flex-direction: column;
-  }
-  .option-one-q5 {
-    padding: 0 0 10px 0;
   }
 }

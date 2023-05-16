@@ -82,11 +82,11 @@ console.log(questions);
                             return (
                                 <div className="questions" key={"key"+index}>
 
-                                <div className="question-one-options">
-
                                 <legend>{item.question}</legend>
 
-                                    <div className="option-one-q1">
+                                <div className="question-options">
+
+                                    <div className="option-one">
 
                                         <input 
                                             type="radio" 
@@ -108,7 +108,7 @@ console.log(questions);
 
                                     </div>
 
-                                    <div className="option-two-q1">
+                                    <div className="option-two">
 
                                         <input 
                                             type="radio" 
@@ -139,7 +139,7 @@ console.log(questions);
 
                     <div className="button-container">
 
-                        <button>tell me!</button>
+                        <button type="submit">tell me!</button>
 
                     </div>
 
@@ -152,3 +152,5 @@ console.log(questions);
 }
 
 export default Form; 
+
+// big thank you to dev friends stuart thiel and sam heaton for helping me! and a MASSIVE thank you to koki vasileski for helping me refactor / optimize this code! helped me reach a stretch goal that i didn't think i would reach in time! 
