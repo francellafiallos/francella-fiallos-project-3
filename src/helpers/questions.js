@@ -1,10 +1,10 @@
 const formQuestions = [
     {
-      question: "1. how old are you?",
-      first: ["pop", "trap", "rap"],
-      second: ["folk", "jazz", "rock"],
-      values: ["18-35", "36-49"], 
-      response: ""
+        question: "1. how old are you?",
+        first: ["pop", "trap", "rap"],
+        second: ["folk", "jazz", "rock"],
+        values: ["18-35", "36-49"], 
+        response: ""
     },
     {
         question: "2. which streaming platform do you use?",
@@ -36,4 +36,4 @@ const formQuestions = [
     }
 ]
 
-export default formQuestions
+export default formQuestions;

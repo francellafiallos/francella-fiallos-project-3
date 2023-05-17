@@ -21,7 +21,8 @@ html {
   background-color: #F8E6E8;
 }
 
-.form-questions {
+.form-questions,
+h4 {
   width: 80%;
   margin: 0 auto;
   font-family: 'Quicksand', sans-serif;
@@ -67,6 +68,10 @@ h3 {
   letter-spacing: 3px;
 }
 
+h4 {
+  padding: 0 0 20px 0;
+}
+
 .grow { 
   transition: all .2s ease-in-out; 
 }
@@ -92,6 +97,23 @@ button {
   letter-spacing: 2px;
   margin: 50px 0 50px 0;
   border: none;
+  transition: .3s;
+}
+
+button:hover {
+  animation: pulse 1s infinite;
+  transition: .3s;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(.9);
+  }
+    100% {
+    transform: scale(1);
+  }
 }
 
 .footer {

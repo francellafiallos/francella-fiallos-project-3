@@ -6,17 +6,12 @@ const Form = () => {
     //saving the API data in state
   const [genre, setGenre] = useState("");
 
-
   const [questions, setQuestions] = useState(formQuestions);
  
-//   const [error, setError] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchData();
   }
-  
-console.log(questions);
 
   //fetching the API data
   const fetchData = () => {
@@ -26,10 +21,8 @@ console.log(questions);
           method: "GET",
           dataResponse: "json"
         }).then( (res) => {
-            console.log(res.data);
             
-       let genres = filterResult(res.data); 
-        console.log(genres);   
+       let genres = filterResult(res.data);  
         setGenre(pickGenre(genres, res.data[0]));
     })
 
@@ -37,7 +30,6 @@ console.log(questions);
     
     const filterResult = (genres) => {
         let newGenres = []
-        // console.log(genres.includes("grave brass")
         for (let i = 0; i < genres.length; i++) {
             let genre = genres[i];
             questions.forEach((chunk) => {
@@ -61,6 +53,8 @@ console.log(questions);
           return genres;
 
     }
+
+    // this is the backup in case the user selects inputs that lead to 0 genres in a new array. what will happen is that we'll go back to the original array of 100 and randomely pick a genre for the user.
     
     const pickGenre = (genres, backup) => {
         if ( genres.length === 0 )
@@ -94,7 +88,6 @@ console.log(questions);
                                             id={item.values[0]} 
                                             className="form-question"
                                             name={"radio" + index} 
-                                            // checked={questionOne === "18-35"}
                                             onChange={(event) => setQuestions([
                                                 ...questions.slice(0, index),
                                                 {
@@ -116,7 +109,6 @@ console.log(questions);
                                             id={item.values[1]}
                                             className="form-question"
                                             name={"radio" + index}
-                                            // checked={questionOne === "36-49"}
                                             onChange={(event) => setQuestions([
                                                 ...questions.slice(0, index),
                                                 {
@@ -145,12 +137,13 @@ console.log(questions);
 
                 </div>
             </form>
-            <h2>If you were a genre, you would be...</h2>
+            <h2>if you were a genre, you would be...</h2>
             {genre && <h3 className="grow">{genre}</h3>} 
+            {genre && <h4>not happy with your genre? keep clicking the button for more options based on your answers!</h4>}
         </section>
     )
 }
 
 export default Form; 
 
-// big thank you to dev friends stuart thiel and sam heaton for helping me! and a MASSIVE thank you to koki vasileski for helping me refactor / optimize this code! helped me reach a stretch goal that i didn't think i would reach in time! 
+// big thank you to dev friends stuart thiel and sam heaton for helping me! a special thank you goes out to my mentor, chris kim. and a MASSIVE thank you to koki vasileski for helping me refactor / optimize this code! he helped me reach a stretch goal that i didn't think i would reach in time! 
