@@ -132,6 +132,7 @@ const Form = () => {
                     <div className="button-container">
 
                         <button type="submit">tell me!</button>
+                        <button type="reset">reset</button>
 
                     </div>
 

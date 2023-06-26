@@ -84,6 +84,14 @@ h4 {
   letter-spacing: 5px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  gap: 20px
+}
+
 button {
   padding-right: 55px;
   padding-left: 55px;
@@ -95,7 +103,6 @@ button {
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   letter-spacing: 2px;
-  margin: 50px 0 50px 0;
   border: none;
   transition: .3s;
 }
@@ -129,6 +136,28 @@ h5 {
 /* credit to kim! for her very nice styling on her portfolio, which i have applied here on my app, with her gracious permission! stanning a queen! */
 
 /* media queries */
+
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  button {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+}
+
+@media (max-width: 370px) {
+  button {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
 
 @media (max-width: 630px) {
   .form-and-header {
